@@ -41,7 +41,7 @@ const LoginComponent: React.FC<{}> = () => {
                 // Set the user login status to true in storage
                 setIsLoggin(true)
                 // Set the uid and the email in storage
-                setUserAuthData({uid: response.user.uid, email: email})
+                setUserAuthData({uid: response.user.uid, email: email.toLowerCase()})
 
             })
             .catch(err => {
