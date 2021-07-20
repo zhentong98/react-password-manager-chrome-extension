@@ -7,6 +7,6 @@ chrome.runtime.onInstalled.addListener(() => {
         email: ''
     })
     setSelectedCredentialsIndex(0)
-    setCredentialsListStorage()
+    setCredentialsListStorage([])
 })
 
