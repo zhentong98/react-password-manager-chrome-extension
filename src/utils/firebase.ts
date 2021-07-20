@@ -16,6 +16,7 @@ export interface credentialInterface {
 
 const firebaseConfig = {
 // Your firebase information
+
 };
 
 firebase.initializeApp(firebaseConfig);

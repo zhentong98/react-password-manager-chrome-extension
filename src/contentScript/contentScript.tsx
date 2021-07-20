@@ -208,8 +208,22 @@ const App: React.FC<{}> = () => {
 
             // fill up the username
             if (credentials) {
-                usernameInput.value = credentials.username
-                usernameInput.defaultValue = credentials.username
+
+                const inputs = document.getElementsByTagName("input");
+                for (let i = 0; i < inputs.length; i++) {
+                    var input = inputs[i];     //look at whatever input
+
+                    if (
+                        ((input.type == "text" &&
+                            (input.name.toLowerCase().indexOf("login") != -1
+                                || input.name.toLowerCase().indexOf("user") != -1
+                                || input.name == "AgentAccount"))
+                            || input.name.toLowerCase() == "loginform:username") || (input.type == 'email' ||
+                        (input.name.toLowerCase().indexOf('login') != -1 || input.name.toLowerCase().indexOf("user") != -1 || input.name == 'email'))) {
+                        input.value = credentials.username
+                    }
+                }
+
             }
             removeThePasswordSuggestionMenu()
         }
@@ -217,7 +231,16 @@ const App: React.FC<{}> = () => {
         if (passwordInput) {
             // fill up the password
             if (credentials) {
-                passwordInput.value = credentials.password
+
+                const inputs = document.getElementsByTagName("input");
+                for (let i = 0; i < inputs.length; i++) {
+                    var input = inputs[i];     //look at whatever input
+
+                    if ((input.type == "password" && (input.name.toLowerCase().indexOf("auth") == -1)) || input.name.toLowerCase() == "loginform:password") {
+                        // passwordInput = input
+                        input.value = credentials.password
+                    }
+                }
             }
             removeThePasswordSuggestionMenu()
         }
