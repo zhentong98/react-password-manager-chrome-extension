@@ -97,10 +97,11 @@ const DashboardComponent: React.FC<{}> = () => {
 
                     const index = values[1] as number
 
-                    if(credentials.length > 0){
+                    if (credentials.length > 0) {
                         setSelectedIndex(index)
                         const selectedCredentials = credentials[index]
 
+                        setSelectedId(selectedCredentials.id)
                         setUpdatedTitle(selectedCredentials.title)
                         setUpdatedUsername(selectedCredentials.username)
                         setUpdatedPassword(selectedCredentials.password)
@@ -129,6 +130,7 @@ const DashboardComponent: React.FC<{}> = () => {
         setIsLoggin(false)
         setUserAuthData({uid: '', email: ''})
             .then(() => {
+                setCredentialsListStorage([])
                 setIsLogout(true)
             })
     }
@@ -187,6 +189,8 @@ const DashboardComponent: React.FC<{}> = () => {
                 credentialsList[index].url = updatedUrl
                 credentialsList[index].last_modified_on = update_on
 
+                setCredentialsListStorage(credentialsList)
+
                 forceUpdate()
                 toast.dark('Credentials was updated!', {
                     position: "bottom-right",
@@ -208,6 +212,8 @@ const DashboardComponent: React.FC<{}> = () => {
                 credentialsList.splice(index, 1)
                 setSelectedId(null)
                 setSelectedIndex(null)
+
+                setCredentialsListStorage(credentialsList)
                 forceUpdate()
                 toast.dark('Credentials has been deleted!', {
                     position: "bottom-right",
@@ -330,6 +336,8 @@ const DashboardComponent: React.FC<{}> = () => {
 
                 const newList = credentialsList
                 newList.push(newDocument)
+
+                setCredentialsListStorage(newList)
 
                 setCredentialsList(newList)
 
