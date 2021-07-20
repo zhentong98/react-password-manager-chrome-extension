@@ -1,0 +1,86 @@
+.password-suggestions {
+    position: absolute;
+    background-color: #1d1e20 !important;
+    color: #fff !important;
+    width: 250px;
+    z-index: 999999;
+    border-radius: 6px;
+}
+
+.password-suggestions ul {
+    list-style: none;
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 6px;
+}
+
+.password-suggestions ul li {
+    padding: 0px 0px 0px 15px;
+    cursor: pointer;
+    border-bottom: 2px solid #2a2b2d !important;
+}
+
+.password-suggestions ul li:first-child:hover {
+    /*background: #2380d1;*/
+    border: 1px solid whitesmoke !important;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.password-suggestions ul li:last-child:hover {
+    /*background: #2380d1;*/
+    border: 1px solid whitesmoke !important;
+    border-bottom-left-radius: 6px !important;
+    border-bottom-right-radius: 6px !important;
+}
+
+.password-suggestions ul li:hover {
+    /*background: #2380d1 !important;*/
+    border: 1px solid whitesmoke !important;
+}
+
+ul li .details h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 5px 0px 5px 0px;
+}
+
+ul li .details p {
+    color: #999a9a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    line-height: 1.2em;
+    padding: 5px 0px 10px 0px;
+}
+
+h3, p {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.text {
+    text-align: left;
+    padding: 0px 0px 10px 15px;
+    color: whitesmoke;
+    font-size: 12px;
+    cursor: default;
+}
+
+.emptyItemList {
+    height: 35px;
+    padding: 10px 0px 0px 0px;
+}
+
+.emptyItemList h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    line-height: 20px;
+}

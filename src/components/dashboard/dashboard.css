@@ -1,0 +1,44 @@
+.search-input {
+    padding: 20px;
+}
+
+.logout-button {
+    padding: 20px;
+    margin-top: 2px;
+}
+
+.border-dark {
+    border-color: #2a2b2d !important;
+}
+
+.username {
+    font-size: 12px;
+    color: #999A9A;
+}
+
+.MuiListItem-root.Mui-selected, .MuiListItem-root.Mui-selected:hover {
+    border: 1px solid white;
+}
+
+.bg-dark {
+    background: #1d1e20 !important;
+}
+
+input {
+    margin-right: 5px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.loading-spinner {
+    padding-top: 200px;
+}
+
+.btn-sm {
+    /*width: 80px !important;*/
+    margin-right: 5px;
+}
+
+.toast{
+    color: white !important;
+}
