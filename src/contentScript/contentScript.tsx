@@ -4,9 +4,9 @@ import {getCredentialsListStorage} from "../utils/storage";
 import {useEffect, useState} from "react";
 import {credentialInterface} from "../utils/firebase";
 import $ from 'jquery';
-
 import './contentScript.css'
-import {act} from "react-dom/test-utils";
+
+
 
 
 type state = "loading" | "error" | "ready"
@@ -19,6 +19,30 @@ const App: React.FC<{}> = () => {
 
     const [credentialsList, setCredentialsList] = useState<credentialInterface[] | null>([])
     const [state, setState] = useState<state>('loading')
+
+
+    $(document).ready(function (){
+        setTimeout(() => {
+            const inputs = document.getElementsByTagName("input");
+
+
+            for(var i =0; i< inputs.length; i++){
+
+                let input = inputs[i]
+
+
+                if(input.id.toLowerCase().indexOf('account_name_text_field') != -1){
+                    usernameInput = input
+                }
+
+                if(input.id.toLowerCase().indexOf('password_text') != -1){
+                    passwordInput = input
+                }
+            }
+
+        }, 1000)
+    })
+
     useEffect(() => {
 
         // Get the activated url
@@ -66,31 +90,43 @@ const App: React.FC<{}> = () => {
 
                         if (filterArray.length > 0) {
 
+
+
                             // Get the username and password input field.
                             const inputs = document.getElementsByTagName("input");
 
                             new Promise<void>((resolve) => {
-                                for (let i = 0; i < inputs.length; i++) {
-                                    var input = inputs[i];     //look at whatever input
 
-                                    if (
-                                        ((input.type == "text" &&
-                                            (input.name.toLowerCase().indexOf("login") != -1
-                                                || input.name.toLowerCase().indexOf("user") != -1
-                                                || input.name == "AgentAccount"))
-                                            || input.name.toLowerCase() == "loginform:username") || (input.type == 'email' ||
-                                        (input.name.toLowerCase().indexOf('login') != -1 || input.name.toLowerCase().indexOf("user") != -1 || input.name == 'email'))) {
-                                        usernameInput = input
+                                if(inputs.length > 0){
+                                    for (let i = 0; i < inputs.length; i++) {
+                                        var input = inputs[i];     //look at whatever input
+
+                                        if (
+                                            ((input.type == "text" &&
+                                                (
+
+                                                    input.name.toLowerCase().indexOf("login") != -1
+                                                    || input.name.toLowerCase().indexOf("user") != -1
+                                                    || input.name == "AgentAccount"))
+                                                || input.name.toLowerCase() == "loginform:username") || (input.type == 'email' ||
+                                            (input.name.toLowerCase().indexOf('login') != -1 || input.name.toLowerCase().indexOf("user") != -1 || input.name == 'email'))) {
+                                            usernameInput = input
+                                        }
+
+                                        if ((input.type == "password" && (input.name.toLowerCase().indexOf("auth") == -1)) || input.name.toLowerCase() == "loginform:password") {
+                                            passwordInput = input
+                                        }
+
+                                        if (i === inputs.length - 1) resolve()
                                     }
-
-                                    if ((input.type == "password" && (input.name.toLowerCase().indexOf("auth") == -1)) || input.name.toLowerCase() == "loginform:password") {
-                                        passwordInput = input
-                                    }
-
-                                    if (i === inputs.length - 1) resolve()
+                                }else{
+                                    resolve()
                                 }
                             }).then(() => {
 
+
+                                console.log(usernameInput)
+                                console.log(passwordInput)
                                 if (usernameInput && passwordInput) {
 
                                     usernameInput.focus()

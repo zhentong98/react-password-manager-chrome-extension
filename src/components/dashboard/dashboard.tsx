@@ -249,6 +249,8 @@ const DashboardComponent: React.FC<{}> = () => {
                 draggable: true,
                 progress: undefined,
             });
+
+            window.close();
         })
     }
 
@@ -272,6 +274,8 @@ const DashboardComponent: React.FC<{}> = () => {
                 draggable: true,
                 progress: undefined,
             });
+
+            window.close();
         })
     }
 
@@ -288,6 +292,7 @@ const DashboardComponent: React.FC<{}> = () => {
         }
 
         window.open(addCredentials ? newUrl : updatedUrl, '_blank')
+        window.close();
     }
 
     function onSearch(text: string) {
